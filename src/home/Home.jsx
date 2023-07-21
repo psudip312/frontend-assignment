@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Card from '../ui/Card';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -13,8 +14,17 @@ const Home = () => {
       
     
   return (
-    <div>Home</div>
-  )
-}
+    <>
+    {products? (products.map((value)=>(
+    <Card values={value}/>
+    )
+    )):(
+        <div>Loading...</div>
+    )
 
+}
+    </>
+  
+  )
+  }
 export default Home
