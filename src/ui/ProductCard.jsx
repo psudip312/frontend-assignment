@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 const productCard = ({ productDetails }) => {
     const navigate=useNavigate();
+    const handleReturnHome=()=>{
+        navigate('/')
+    }
   return (
     <>
-    <div onClick={navigate()}>
-    <button className="px-4 py-2 text-white font-semibold bg-slate-900 rounded-md">Return Home</button>
-    </div>
+    <button onClick={handleReturnHome} className="px-4 py-2 text-white font-semibold bg-slate-900 rounded-md">Return Home</button>
     <div className="px-5 py-24 bg-gray-300">
     <div class="px-3 flex md:px-40 ">
       <div class="w-1/2">
