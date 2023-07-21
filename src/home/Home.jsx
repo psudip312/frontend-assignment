@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <>
       <input
-        className=""
+        className="w-full border border-r-gray-700 text-center p-4 shadow-2xl mb-3"
         type="text"
         onChange={handleChange} 
         placeholder="Search for products"
