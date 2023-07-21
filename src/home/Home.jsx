@@ -15,14 +15,19 @@ const Home = () => {
     
   return (
     <>
+    <div className='px-20'>
+    <div className='flex flex-wrap gap-4'>
     {products? (products.map((value)=>(
-    <Card values={value}/>
-    )
-    )):(
-        <div>Loading...</div>
-    )
-
-}
+        <Card values={value}/>
+        )
+        )):(
+            <div>Loading...</div>
+        )
+    
+    }
+    </div>
+    </div>
+ 
     </>
   
   )
