@@ -17,5 +17,5 @@ Prerequisites:Node.js
 
 Setup:Clone the repository:git clone https://github.com/psudip312/frontend-assignment
 cd to that directory
-yarn install
-yarn dev
+then run comman yarn install
+then yarn dev
