@@ -15,6 +15,7 @@ const ProductDetails = () => {
       });
   }, [id]);
   console.log("productkodetail",productDetails)
+
     return (
     <div>
     <ProductCard productDetails={productDetails}/>

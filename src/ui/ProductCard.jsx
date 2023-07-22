@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const productCard = ({ productDetails }) => {
+  const [isFavorite, setFavorite] = useState(false);
   const navigate = useNavigate();
   const handleReturnHome = () => {
     navigate("/");
   };
-  const handleCart=(productDetails.id)=>{
-    //convert of selected product into a Json String
-    const productJsonStirng=JSON.stringify(productDetails);
-    localStorage.setItem("cart items",productDetails)
-  }
+
+
+  //function to handleFavourite
+  const handleCart = (meta) => {
+    if (isFavorite) {
+      // Remove from favorites
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const updatedFavorites = favorites.filter((item) => item.id !== meta.id);
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setFavorite(false);
+    } else {
+      // Add to favorites
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      // get lekhnu ko karan path
+      const updatedFavorites = [...favorites, meta];
+
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setFavorite(true);
+    }
+  };
   return (
     <>
       <button
@@ -37,9 +53,13 @@ const productCard = ({ productDetails }) => {
               <p class=" text-xl font-semibold">
                 Price:${productDetails?.price}
               </p>
-              <div onClick={()=>handleCart(productDetails.id)}className="flex cursor-pointer">
-                Add to Cart:
-                <AiOutlineHeart size={30} />
+              <div
+                onClick={() => handleCart(productDetails)}
+                className={`favorite-button ${
+                  isFavorite ? "favorite-active" : ""
+                }`}
+              >
+                {isFavorite ? <AiFillHeart size={26}/> : <AiOutlineHeart size={26} />}
               </div>
             </div>
           </div>
